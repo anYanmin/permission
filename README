@@ -1,0 +1,46 @@
+项目说明：
+    权限管理系统
+
+项目开发流程
+	1.设计数据库
+		创建数据库、创建表、添加初始数据
+		数据库和表设计规范
+		1) 每个表都有自己的主键
+		2) 字段尽量定义为NOT NULL,可为字段设定默认值
+		3) 尽量为每个字段添加备注说明
+		4) 数据库字段统一小写，单词之间使用下划线分隔
+		5) mysql数据库使用InnoDB存储引擎
+		6) 可以使用varchar的字段尽量不用TEXT、BLOB类型
+		7) 字符集使用UTF8
+	2.创建Java工程
+		1) 构建maven项目，引入相关依赖
+		2) 配置web.xml
+			1>配置listener
+			2>配置springbean并指定配置文件路径
+			3>配置springMVC并指定配置文件路径
+			4>配置编码格式
+		3) 修改指定的springMVC配置文件
+			1>添加context:annotation-config标签
+			2>开启springMVC注解驱动并添加要扫描的包
+			3>添加RequestMappingHandlerMapping类的bean
+			4>添加BeanNameViewResolver类配置数据和视图
+		4) 修改指定的spring配置文件（bean配置）
+			1>选择配置连接池(c3p0,dbcp,druid...)添加数据库
+			2>配置spring管理mybatis的相关bean
+			3>开启事务管理(非必须)
+			4>如果使用了druid还需在web.xml中配置druid的访问
+		5) 修改mybatis配置文件
+	3.测试构建好的开发环境
+	4.修改generator/generator.xml,使用mybatis代码生成器自动创建代码
+	5.定义项目接口JsonData;定义全局异常请求处理类SpringExceptionResolver并添加到springMVC容器中
+	6.开发相关工具类并测试
+		1) 构建基于注解的参数校验工具BeanValidator
+		2) 数据格式转化工具类JsonMapper
+		3) spring上下文对象工具类ApplicationContextHelper
+		4) Http请求拦截器HttpInterceptor
+	7.部门管理模块开发
+		1) 部门管理的基本增删改查功能
+		2) 部门管理的service层业务逻辑开发
+		3) 部门管理的controller层数据接口开发
+		5) 添加前端交互页面
+		4) 测试...

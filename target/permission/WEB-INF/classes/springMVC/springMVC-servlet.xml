@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!-- 使用上下文对象管理springmvc注解 -->
+    <context:annotation-config />
+
+    <!-- 启动注解驱动的springMVC功能 -->
+    <mvc:annotation-driven />
+    <!-- 管理Http请求拦截器 -->
+    <mvc:interceptors>
+        <bean class="com.idea.permission.common.HttpInterceptor" />
+    </mvc:interceptors>
+
+    <!-- 启动包扫描功能 -->
+    <context:component-scan base-package="com.idea.permission.service" />
+    <context:component-scan base-package="com.idea.permission.controller" />
+
+    <!-- 允许加载静态资源 -->
+    <mvc:resources mapping="/js/**" location="/js/" />
+    <mvc:resources mapping="/css/**" location="/css/" />
+    <mvc:resources mapping="/bootstrap3.3.5/**" location="/bootstrap3.3.5/" />
+    <mvc:resources mapping="/assets/**" location="/assets/" />
+
+    <!-- 启动容器时必须加载的工具类 -->
+    <bean class="com.idea.permission.common.ApplicationContextHelper" lazy-init="false" />
+
+    <!-- 处理http请求到controller的映射关系 -->
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>
+
+    <!-- 配置返回数据和视图的格式 -->
+    <bean class="org.springframework.web.servlet.view.BeanNameViewResolver" />
+    <!-- 返回json数据格式,使用MappingJackson2JsonView来处理json数据 -->
+    <bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />
+    <!-- 返回view的配置,文件路径和后缀 -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
+        <property name="prefix" value="/WEB-INF/views/" />
+        <property name="suffix" value=".jsp" />
+    </bean>
+
+    <!-- 自定义ExceptionResolver处理全局异常 -->
+    <bean class="com.idea.permission.common.SpringExceptionResolver" />
+</beans>

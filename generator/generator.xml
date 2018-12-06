@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <classPathEntry location="D:\Repository\mysql\mysql-connector-java\5.1.35\mysql-connector-java-5.1.35.jar" />
+    <context id="DB2Tables" targetRuntime="Mybatis3">
+        <commentGenerator>
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+
+        <!-- 数据库配置 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://127.0.0.1:3306/rbac?characterEncoding=utf-8" userId="root" password="2201"/>
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <!-- 生成model的包名和位置 -->
+        <javaModelGenerator targetPackage="com.idea.permission.model" targetProject="E:\workstation\java\permission\generator\src">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="fasle" />
+        </javaModelGenerator>
+        <!-- 生成映射文件的包名和位置 -->
+        <sqlMapGenerator targetPackage="com.idea.permission.mapper" targetProject="E:\workstation\java\permission\generator\src">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+        <!-- 生成dao的包名和位置 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.idea.permission.dao" targetProject="E:\workstation\java\permission\generator\src">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+        <!-- 指定数据库中的表 -->
+        <table tableName="sys_user" domainObjectName="SysUser" mapperName="SysUserDao" enableCountByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" enableDeleteByExample="false" enableUpdateByExample="false"/>
+        <table tableName="sys_dept" domainObjectName="SysDept" mapperName="SysDeptDao" enableCountByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" enableDeleteByExample="false" enableUpdateByExample="false"/>
+        <table tableName="sys_acl" domainObjectName="SysAcl" mapperName="SysAclDao" enableCountByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" enableDeleteByExample="false" enableUpdateByExample="false"/>
+        <table tableName="sys_acl_module" domainObjectName="SysAclModule" mapperName="SysAclModuleDao" enableCountByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" enableDeleteByExample="false" enableUpdateByExample="false"/>
+        <table tableName="sys_role" domainObjectName="SysRole" mapperName="SysRoleDao" enableCountByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" enableDeleteByExample="false" enableUpdateByExample="false"/>
+        <table tableName="sys_role_acl" domainObjectName="SysRoleAcl" mapperName="SysRoleAclDao" enableCountByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" enableDeleteByExample="false" enableUpdateByExample="false"/>
+        <table tableName="sys_role_user" domainObjectName="SysRoleUser" mapperName="SysRoleUserDao" enableCountByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" enableDeleteByExample="false" enableUpdateByExample="false"/>
+        <table tableName="sys_log" domainObjectName="SysLog" mapperName="SysLogDao" enableCountByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" enableDeleteByExample="false" enableUpdateByExample="false"/>
+    </context>
+</generatorConfiguration>
