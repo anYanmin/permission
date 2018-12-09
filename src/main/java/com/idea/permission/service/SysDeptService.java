@@ -49,6 +49,12 @@ public class SysDeptService {
         updateWithChild(oldDept, newDept);
     }
 
+    /**
+     * 更新部门及其子部门
+     * 更新操作可能涉及多个层级的部门,因此需要使用Transactional注解开启事务保证全部更新成功或者全部更新失败.
+     * @param oldDept 更新之前的部门
+     * @param newDept 更新之后的部门
+     */
     @Transactional
     public void updateWithChild(SysDept oldDept, SysDept newDept) {
         String oldLevelPrefix = oldDept.getLevel();
@@ -66,7 +72,7 @@ public class SysDeptService {
                 sysDeptDao.batchUpdateLevel(deptList);
             }
         }
-        sysDeptDao.updateByPrimaryKeySelective(newDept);
+        sysDeptDao.updateByPrimaryKey(newDept);
     }
 
     private boolean checkExists(Integer parentId, String deptName, Integer deptId) {

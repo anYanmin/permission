@@ -1,7 +1,16 @@
 package com.idea.permission.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
 import java.util.Date;
 
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class SysUser {
     private Integer id;
 
@@ -9,7 +18,7 @@ public class SysUser {
 
     private String telephone;
 
-    private String mail;
+    private String email;
 
     private String password;
 
@@ -24,8 +33,6 @@ public class SysUser {
     private Date operateTime;
 
     private String operatorIp;
-
-    private Date createTime;
 
     public Integer getId() {
         return id;
@@ -51,12 +58,12 @@ public class SysUser {
         this.telephone = telephone;
     }
 
-    public String getMail() {
-        return mail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setMail(String mail) {
-        this.mail = mail;
+    public void setEmail(String mail) {
+        this.email = mail;
     }
 
     public String getPassword() {
@@ -113,13 +120,5 @@ public class SysUser {
 
     public void setOperatorIp(String operatorIp) {
         this.operatorIp = operatorIp;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
     }
 }

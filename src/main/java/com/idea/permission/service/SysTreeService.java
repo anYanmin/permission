@@ -34,8 +34,8 @@ public class SysTreeService {
             return Lists.newArrayList();
         }
         //以level为key,以deptList为value
-        List<DeptLevelDto> rootList = Lists.newArrayList();
         Multimap<String, DeptLevelDto> levelDeptMap = ArrayListMultimap.create();
+        List<DeptLevelDto> rootList = Lists.newArrayList();
         for (DeptLevelDto dto : deptLevelDtoList) {
             levelDeptMap.put(dto.getLevel(), dto);
             if (LevelUtil.ROOT.equals(dto.getLevel())) {

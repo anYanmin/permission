@@ -23,8 +23,6 @@ public class SysAclModule {
 
     private String operatorIp;
 
-    private Date createTime;
-
     public Integer getId() {
         return id;
     }
@@ -103,13 +101,5 @@ public class SysAclModule {
 
     public void setOperatorIp(String operatorIp) {
         this.operatorIp = operatorIp;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
     }
 }

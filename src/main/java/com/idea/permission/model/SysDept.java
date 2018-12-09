@@ -30,8 +30,6 @@ public class SysDept {
 
     private String operatorIp;
 
-    private Date createTime;
-
     public Integer getId() {
         return id;
     }
@@ -102,13 +100,5 @@ public class SysDept {
 
     public void setOperatorIp(String operatorIp) {
         this.operatorIp = operatorIp;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
     }
 }

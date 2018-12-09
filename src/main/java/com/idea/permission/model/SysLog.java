@@ -17,8 +17,6 @@ public class SysLog {
 
     private Integer status;
 
-    private Date createTime;
-
     public Integer getId() {
         return id;
     }
@@ -73,13 +71,5 @@ public class SysLog {
 
     public void setStatus(Integer status) {
         this.status = status;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
     }
 }

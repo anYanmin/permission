@@ -33,20 +33,20 @@ public class SysDeptController {
     @ResponseBody
     public JsonData saveDept(DeptParam param) {
         sysDeptService.save(param);
-        return JsonData.success();
+        return JsonData.success(null, "save dept success");
     }
 
     @RequestMapping("/tree.json")
     @ResponseBody
     public JsonData tree() {
         List<DeptLevelDto> dtoList = sysTreeService.deptTree();
-        return JsonData.success(dtoList);
+        return JsonData.success(dtoList, "Generate deptTree success");
     }
 
     @RequestMapping("/update.json")
     @ResponseBody
     public JsonData updateDept(DeptParam param) {
         sysDeptService.update(param);
-        return JsonData.success();
+        return JsonData.success(null, "update dept success");
     }
 }
