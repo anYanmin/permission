@@ -14,11 +14,10 @@
         <result column="operator" jdbcType="VARCHAR" property="operator"/>
         <result column="operate_time" jdbcType="TIMESTAMP" property="operateTime"/>
         <result column="operator_ip" jdbcType="VARCHAR" property="operatorIp"/>
-        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
     </resultMap>
     <sql id="Base_Column_List">
         id, code, name, acl_module_id, url, type, status, seq, remark, operator, operate_time,
-        operator_ip, create_time
+        operator_ip
     </sql>
     <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select
@@ -34,13 +33,11 @@
         insert into sys_acl (id, code, name,
         acl_module_id, url, type,
         status, seq, remark,
-        operator, operate_time, operator_ip,
-        create_time)
+        operator, operate_time, operator_ip)
         values (#{id,jdbcType=INTEGER}, #{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR},
         #{aclModuleId,jdbcType=INTEGER}, #{url,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER},
         #{status,jdbcType=INTEGER}, #{seq,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR},
-        #{operator,jdbcType=VARCHAR}, #{operateTime,jdbcType=TIMESTAMP}, #{operatorIp,jdbcType=VARCHAR},
-        #{createTime,jdbcType=TIMESTAMP})
+        #{operator,jdbcType=VARCHAR}, #{operateTime,jdbcType=TIMESTAMP}, #{operatorIp,jdbcType=VARCHAR}
     </insert>
     <insert id="insertSelective" parameterType="com.idea.permission.model.SysAcl">
         insert into sys_acl
@@ -81,9 +78,6 @@
             <if test="operatorIp != null">
                 operator_ip,
             </if>
-            <if test="createTime != null">
-                create_time,
-            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -121,9 +115,6 @@
             </if>
             <if test="operatorIp != null">
                 #{operatorIp,jdbcType=VARCHAR},
-            </if>
-            <if test="createTime != null">
-                #{createTime,jdbcType=TIMESTAMP},
             </if>
         </trim>
     </insert>
@@ -163,9 +154,6 @@
             <if test="operatorIp != null">
                 operator_ip = #{operatorIp,jdbcType=VARCHAR},
             </if>
-            <if test="createTime != null">
-                create_time = #{createTime,jdbcType=TIMESTAMP},
-            </if>
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
@@ -181,8 +169,7 @@
         remark = #{remark,jdbcType=VARCHAR},
         operator = #{operator,jdbcType=VARCHAR},
         operate_time = #{operateTime,jdbcType=TIMESTAMP},
-        operator_ip = #{operatorIp,jdbcType=VARCHAR},
-        create_time = #{createTime,jdbcType=TIMESTAMP}
+        operator_ip = #{operatorIp,jdbcType=VARCHAR}
         where id = #{id,jdbcType=INTEGER}
     </update>
 </mapper>

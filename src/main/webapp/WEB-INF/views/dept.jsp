@@ -211,9 +211,9 @@
                 success : function (result) {
                     if (result.ret) {
                         deptList = result.data;
-                        var rendered = Mustache.render(deptListTemplate, {deptList: result.data});
+                        var rendered = Mustache.render(deptListTemplate, {deptList: deptList});
                         $("#deptList").html(rendered);
-                        recursiveRenderDept(result.data);
+                        recursiveRenderDept(deptList);
                         bindDeptClick();
                     } else {
                         showMessage("加载部门列表", result.msg, false);
@@ -270,8 +270,8 @@
             });
 
             $(".dept-edit").click(function(e) {
-                e.preventDefault();
-                e.stopPropagation();
+                e.preventDefault(); //取消事件的默认动作
+                e.stopPropagation(); //终止事件在传播过程的捕获、目标处理或起泡阶段进一步传播
                 var deptId = $(this).attr("data-id");
                 $("#dialog-dept-form").dialog({
                     model: true,
@@ -309,7 +309,7 @@
         }
 
         function handleDepSelected(deptId) {
-            if (lastClickDeptId != -1) {
+            if (lastClickDeptId !== -1) {
                 var lastDept = $("#dept_" + lastClickDeptId + " .dd2-content:first");
                 lastDept.removeClass("btn-yellow");
                 lastDept.removeClass("no-hover");
